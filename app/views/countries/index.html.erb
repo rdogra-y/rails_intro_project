@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Countries</title>
+</head>
+<body>
+  <h1>Countries</h1>
+  
+    <form method="get">
+        <input type="text" name="query" placeholder="Search countries">
+        <button type="submit">Search</button>
+    </form>
+
+  <% @countries.each do |country| %>
+    <p><%= link_to country.name, country_path(country) %></p>
+  <% end %>
+
+  <div class="pagination">
+    <%= paginate @countries %>
+  </div>
+</body>
+</html>
