@@ -22,3 +22,13 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+# Dataset Description
+1. Weather Data:
+   - Source: OpenWeather API
+   - Fields: City Name, Temperature, Humidity, Weather Condition
+   - URL: https://openweathermap.org/api
+
+2. Country Data:
+   - Source: REST Countries API
+   - Fields: Country Name, Capital, Population, Currency
+   - URL: https://restcountries.com/
