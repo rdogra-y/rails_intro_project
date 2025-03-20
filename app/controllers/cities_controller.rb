@@ -2,7 +2,11 @@ class CitiesController < ApplicationController
   before_action :set_country
 
   def index
-    @cities = @country.cities
+    if params[:query].present?
+      @cities = @country.cities.where("LOWER(name) LIKE ?", "%#{params[:query].downcase}%")
+    else
+      @cities = @country.cities
+    end
   end
 
   def show
