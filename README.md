@@ -32,3 +32,22 @@ Things you may want to cover:
    - Source: REST Countries API
    - Fields: Country Name, Capital, Population, Currency
    - URL: https://restcountries.com/
+
+# Dataset erd diagram
+-----------------------------------
+User (linked to Country, though its role isn't fully clear)
+-----------------------------------
+                  ^
+                  |
+                  |
+            Many to Many
+-----------------------------------
+Country (stores country details)
+-----------------------------------
+                  ^
+                  |
+                  |
+            one to Many
+--------------------------------------
+City (linked to Country, representing one-to-many relationship)
+---------------------------------------
