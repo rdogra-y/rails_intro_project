@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= @city.name %> - City Details</title>
+  </head>
+
+  <body>
+    <h1><%= @city.name %></h1>
+    <p>Weather Condition: <%= @city.weather_condition %></p>
+    <p>Temperature: <%= @city.temperature %>°C</p>
+    <p>Humidity: <%= @city.humidity %>%</p>
+
+    <h3>Country Information</h3>
+    <p>Country: <%= link_to @city.country.name, country_path(@city.country) %></p>
+
+    <p><%= link_to 'Back to All Countries', countries_path %></p>
+  </body>
+</html>

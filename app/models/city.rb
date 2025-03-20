@@ -7,4 +7,6 @@ class City < ApplicationRecord
   validates :temperature, presence: true, numericality: true
   validates :humidity, presence: true, numericality: { only_integer: true }
   validates :weather_condition, presence: true
+  validates :latitude, presence: true
+  validates :longitude, presence: true
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_03_19_172017) do
+ActiveRecord::Schema[7.2].define(version: 2025_03_20_033440) do
   create_table "cities", force: :cascade do |t|
     t.string "name"
     t.float "temperature"
@@ -19,6 +19,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_19_172017) do
     t.integer "country_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
     t.index ["country_id"], name: "index_cities_on_country_id"
   end
 
@@ -29,6 +31,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_19_172017) do
     t.string "currency"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
   end
 
   create_table "user_cities", force: :cascade do |t|

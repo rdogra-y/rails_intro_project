@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
   # Health Check Route (For Monitoring)
   get "up" => "rails/health#show", as: :rails_health_check
 
@@ -10,12 +8,15 @@ Rails.application.routes.draw do
 
   # Application Routes
   get '/about', to: 'pages#about'  # About Page Route
-  
+
   # Resources (CRUD routes for Countries and Cities)
   resources :countries do
-    resources :cities, only: [:index, :show]  # Nested routes for Cities under Countries
+    resources :cities, only: [:index, :show]  # Nested Cities under Countries
   end
 
+  # Add a standalone cities route to list all cities
+  resources :cities, only: [:index, :show]
+
   # Define the root path (Homepage)
-  root "countries#index"  # Set Homepage to Countries List
+  root "countries#index"
 end

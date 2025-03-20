@@ -64,3 +64,7 @@ end
 gem "kaminari", "~> 1.2"
 
 gem "html-proofer", "~> 5.0"
+
+gem "bootstrap", "~> 5.3"
+
+gem "sassc-rails", "~> 2.1"
