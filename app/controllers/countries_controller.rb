@@ -6,4 +6,8 @@ class CountriesController < ApplicationController
       @countries = Country.page(params[:page]).per(10)
     end
   end
+
+  def show
+    @country = Country.find(params[:id])  # Fetch the country by ID
+  end
 end
