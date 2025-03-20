@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :cities, only: [:index, :show]  # Nested Cities under Countries
   end
 
-  # Add a standalone cities route to list all cities
+  # Standalone Cities Routes (if needed)
   resources :cities, only: [:index, :show]
 
   # Define the root path (Homepage)

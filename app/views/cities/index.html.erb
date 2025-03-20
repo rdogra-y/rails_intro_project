@@ -1,0 +1,12 @@
+<h1>Cities in <%= @country.name %></h1>
+<p>Find me in app/views/cities/index.html.erb</p>
+
+<ul>
+  <% @cities.each do |city| %>
+    <li>
+      <%= link_to city.name, country_city_path(@country, city) %> - <%= city.weather_condition %>
+    </li>
+  <% end %>
+</ul>
+
+<p><%= link_to "Back to Countries", countries_path %></p>
