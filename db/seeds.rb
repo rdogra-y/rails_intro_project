@@ -5,7 +5,7 @@ require 'faker'
 puts "Seeding data..."
 
 # API Key - Replace with your actual OpenWeather API key
-openweather_api_key = "YOUR_VALID_OPENWEATHER_API_KEY"
+openweather_api_key = "bd5e378503939ddaee76f12ad7a97608"
 
 # Fetch country data from REST Countries API
 countries_url = "https://restcountries.com/v3.1/all"
@@ -50,4 +50,12 @@ countries.first(10).each do |c|
   end
 end
 
+# Generate 10 Fake Users
+10.times do
+User.create!(
+  name: Faker::Name.name,
+  email: Faker::Internet.email
+)
+end
+puts "✅ 10 Fake Users Created!"
 puts "Seeding complete!"
