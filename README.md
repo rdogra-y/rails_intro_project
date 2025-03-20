@@ -33,9 +33,13 @@ Things you may want to cover:
    - Fields: Country Name, Capital, Population, Currency
    - URL: https://restcountries.com/
 
+
+
+
+
 # Dataset erd diagram
 -----------------------------------
-User (linked to Country, though its role isn't fully clear)
+User (linked to Country)
 -----------------------------------
                   ^
                   |
@@ -43,6 +47,11 @@ User (linked to Country, though its role isn't fully clear)
             Many to Many
 -----------------------------------
 Country (stores country details)
+=================================
+Country Name 
+Capital 
+Population 
+Currency
 -----------------------------------
                   ^
                   |
@@ -50,4 +59,9 @@ Country (stores country details)
             one to Many
 --------------------------------------
 City (linked to Country, representing one-to-many relationship)
+======================================
+City Name
+Temperature 
+Humidity 
+Weather Condition
 ---------------------------------------
