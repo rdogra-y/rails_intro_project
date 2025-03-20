@@ -13,21 +13,6 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
   <style>
-    #map { h<!DOCTYPE html>
-<html>
-
-<head>
-  <title><%= @country.name %></title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-
-  <!-- Leaflet CSS & JS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-  <style>
     #map { height: 400px; width: 100%; }
   </style>
 </head>
@@ -67,56 +52,16 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      var map = L.map('map').setView([<%= @country.latitude %>, <%= @country.longitude %>], 5);
+      var latitude = <%= @country.latitude || 0 %>;
+      var longitude = <%= @country.longitude || 0 %>;
+
+      var map = L.map('map').setView([latitude, longitude], 5);
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap contributors'
       }).addTo(map);
 
-      L.marker([<%= @country.latitude %>, <%= @country.longitude %>]).addTo(map)
-        .bindPopup('<b><%= @country.name %></b>')
-        .openPopup();
-    });
-  </script>
-
-</body>
-</html>
-eight: 400px; width: 100%; }
-  </style>
-</head>
-
-<body>
-  <h1><%= @country.name %></h1>
-  <p>Capital: <%= @country.capital %></p>
-  <p>Population: <%= @country.population %></p>
-  <p>Currency: <%= @country.currency %></p>
-
-  <h2>Location</h2>
-  <div id="map"></div>
-
-  <h2>Cities</h2>
-  <ul>
-    <% @country.cities.each do |city| %>
-      <li>
-        <%= link_to city.name, country_city_path(@country, city) %> - <%= city.weather_condition %>
-      </li>
-    <% end %>
-  </ul>
-
-  <p><%= link_to "Back to Countries", countries_path %></p>
-
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      var map = L.map('map').setView([<%= @country.latitude %>, <%= @country.longitude %>], 5);
-
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap contributors'
-      }).addTo(map);
-
-      L.marker([<%= @country.latitude %>, <%= @country.longitude %>]).addTo(map)
+      L.marker([latitude, longitude]).addTo(map)
         .bindPopup('<b><%= @country.name %></b>')
         .openPopup();
     });
