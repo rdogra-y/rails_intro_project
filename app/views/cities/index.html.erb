@@ -20,6 +20,14 @@
 <body class="container mt-4">
   <h1 class="text-center">Cities in <%= @country.name %></h1>
 
+  <!-- Search Form -->
+  <form method="get" class="mb-4">
+    <div class="input-group">
+      <input type="text" name="query" class="form-control" placeholder="Search cities in <%= @country.name %>" value="<%= params[:query] %>">
+      <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+  </form>
+
   <div id="map"></div>
 
   <% if @cities.any? %>
@@ -32,7 +40,7 @@
       <% end %>
     </ul>
   <% else %>
-    <p class="text-muted text-center mt-3">No cities available.</p>
+    <p class="text-muted text-center mt-3">No cities found matching "<%= params[:query] %>".</p>
   <% end %>
 
   <p class="mt-4 text-center"><%= link_to "Back to Countries", countries_path, class: "btn btn-primary" %></p>
