@@ -3,7 +3,56 @@
 
 <ul>
   <% @cities.each do |city| %>
-    <li>
+    <li<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Cities in <%= @country.name %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Leaflet CSS & JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <style>
+    #map { height: 500px; width: 100%; }
+  </style>
+</head>
+
+<body>
+  <h1>Cities in <%= @country.name %></h1>
+  <p>Find me in <code>app/views/cities/index.html.erb</code></p>
+
+  <div id="map"></div>
+
+  <ul>
+    <% @cities.each do |city| %>
+      <li>
+        <%= link_to city.name, country_city_path(@country, city) %> - <%= city.weather_condition %>
+      </li>
+    <% end %>
+  </ul>
+
+  <p><%= link_to "Back to Countries", countries_path %></p>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var map = L.map('map').setView([20, 0], 2); // Default world view
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+      }).addTo(map);
+
+      <% @cities.each do |city| %>
+        L.marker([<%= city.latitude %>, <%= city.longitude %>]).addTo(map)
+          .bindPopup('<b><%= city.name %></b> - <%= city.weather_condition %>');
+      <% end %>
+    });
+  </script>
+
+</body>
+</html>
+>
       <%= link_to city.name, country_city_path(@country, city) %> - <%= city.weather_condition %>
     </li>
   <% end %>

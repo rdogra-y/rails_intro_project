@@ -3,6 +3,15 @@
 
 <head>
   <title><%= @country.name %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Leaflet CSS & JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <style>
+    #map { height: 400px; width: 100%; }
+  </style>
 </head>
 
 <body>
@@ -10,6 +19,9 @@
   <p>Capital: <%= @country.capital %></p>
   <p>Population: <%= @country.population %></p>
   <p>Currency: <%= @country.currency %></p>
+
+  <h2>Location</h2>
+  <div id="map"></div>
 
   <h2>Cities</h2>
   <ul>
@@ -21,6 +33,20 @@
   </ul>
 
   <p><%= link_to "Back to Countries", countries_path %></p>
-</body>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var map = L.map('map').setView([<%= @country.latitude %>, <%= @country.longitude %>], 5);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+      }).addTo(map);
+
+      L.marker([<%= @country.latitude %>, <%= @country.longitude %>]).addTo(map)
+        .bindPopup('<b><%= @country.name %></b>')
+        .openPopup();
+    });
+  </script>
+
+</body>
 </html>
